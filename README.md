@@ -15,10 +15,6 @@ Familiarise yourself with these tools before continuing.
 $ aws-vault exec some-aws-account
 # Tell pulumi to use the state bucket you have created
 $ pulumi login s3://some-state-bucket
-# The state is encrypted with this password
-# so everyone who needs to handle this state
-# needs to know it.
-$ export PULUMI_CONFIG_PASSPHRASE=some-password
 ```
 
 # interesting reads, pulumi docs & gotcha's
