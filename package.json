@@ -1,0 +1,31 @@
+{
+  "name": "night_city.ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "prettier --check .",
+    "lint:fix": "prettier --write .",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/refsiverdur/night_city.ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/refsiverdur/night_city.ts/issues"
+  },
+  "homepage": "https://github.com/refsiverdur/night_city.ts#readme",
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "jest": "^27.3.1",
+    "prettier": "^2.4.1",
+    "ts-jest": "^27.0.7"
+  },
+  "dependencies": {
+    "ts-node": "^10.3.0"
+  }
+}
