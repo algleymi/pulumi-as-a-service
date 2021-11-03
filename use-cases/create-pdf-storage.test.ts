@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import { Output } from "@pulumi/pulumi";
-import { createBucket } from "./bucket";
+import { createPdfStorage } from "./create-pdf-storage";
 
 function getResultFromPulumiUp(
   dependencies: [Output<string>]
@@ -12,7 +12,7 @@ function getResultFromPulumiUp(
 
 test("bucket gets created with a name", async function () {
   const BUCKET_NAME = "some-bucket";
-  const bucket = createBucket(BUCKET_NAME);
+  const bucket = createPdfStorage(BUCKET_NAME);
   const [bucketName] = await getResultFromPulumiUp([bucket.bucket]);
   expect(bucketName).toEqual(BUCKET_NAME);
 });
