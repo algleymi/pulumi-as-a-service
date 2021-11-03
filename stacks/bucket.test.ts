@@ -1,5 +1,5 @@
 import * as pulumi from "@pulumi/pulumi";
-import { Output, OutputInstance } from "@pulumi/pulumi";
+import { Output } from "@pulumi/pulumi";
 import { createBucket } from "./bucket";
 
 function getResultFromPulumiUp(
