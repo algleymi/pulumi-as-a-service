@@ -13,8 +13,10 @@ Familiarise yourself with these tools before continuing.
 ```bash
 # Authenticate with AWS
 $ aws-vault exec some-aws-account
+# Tell pulumi to use the KMS encryption key to encrypt the state
+$ export KMS_KEY_ALIAS=pulumi-secrets-encryption-key
 # Tell pulumi to use the state bucket you have created
-$ pulumi login s3://some-state-bucket
+$ export PULUMI_BACKEND_URL=s3://arno-pulumi-state-bucket-deleteme
 ```
 
 # interesting reads, pulumi docs & gotcha's
