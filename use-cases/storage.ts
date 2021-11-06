@@ -24,9 +24,6 @@ export function createStorage(applicationName: string) {
   return createProgram(() => storageStack(applicationName));
 }
 
-export function deleteStorage(
-  applicationName: string,
-  secretsProvider: string
-) {
+export function deleteStorage(applicationName: string) {
   return destroyProgram(() => storageStack(applicationName));
 }
