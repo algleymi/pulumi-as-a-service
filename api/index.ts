@@ -1,7 +1,17 @@
+import {
+  getPulumiConfiguration,
+  validateEnvironmentVariables,
+} from "../pulumi-configuration";
 import * as useCases from "../use-cases/index";
 
 import { createApi } from "./adapters/routes";
 
-const server = createApi(useCases);
+function start() {
+  validateEnvironmentVariables();
 
-server.listen(9000);
+  const pulumiConfiguration = getPulumiConfiguration();
+  const server = createApi(useCases, pulumiConfiguration);
+  server.listen(9000);
+}
+
+start();

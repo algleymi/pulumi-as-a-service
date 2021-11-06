@@ -10,7 +10,7 @@ function getResultFromPulumiUp(
   });
 }
 
-test("bucket gets created with a name", async function () {
+it("bucket gets created with a name", async function () {
   const BUCKET_NAME = "some-bucket";
   const result = await storageStack(BUCKET_NAME);
   const [bucketName, acl] = await getResultFromPulumiUp([

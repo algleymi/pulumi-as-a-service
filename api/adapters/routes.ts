@@ -1,15 +1,19 @@
 import express from "express";
+import { PulumiConfiguration } from "../../pulumi-configuration";
 
-export function createApi({ createStorage, deleteStorage }: any) {
+export function createApi(
+  { createStorage, deleteStorage }: any,
+  configuration: PulumiConfiguration
+) {
   const server = express();
 
   server.post("/storage", async function (_, res) {
-    await createStorage("arno-delete-me");
+    await createStorage("arno-delete-me", configuration);
     res.sendStatus(200);
   });
 
   server.delete("/storage", async function (_, res) {
-    await deleteStorage("arno-delete-me");
+    await deleteStorage("arno-delete-me", configuration);
     res.sendStatus(200);
   });
 
