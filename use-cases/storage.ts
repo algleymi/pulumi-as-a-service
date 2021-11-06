@@ -1,7 +1,6 @@
 import * as aws from "@pulumi/aws";
 import { Bucket } from "@pulumi/aws/s3";
 import { enums } from "@pulumi/aws/types";
-import { PulumiConfiguration } from "../pulumi-configuration";
 import { createProgram, destroyProgram } from "./program";
 
 type StorageStackResult = {
@@ -23,14 +22,14 @@ export async function storageStack(
 
 export function createStorage(
   applicationName: string,
-  configuration: PulumiConfiguration
+  secretsProvider: string
 ) {
-  return createProgram(() => storageStack(applicationName), configuration);
+  return createProgram(() => storageStack(applicationName), secretsProvider);
 }
 
 export function deleteStorage(
   applicationName: string,
-  configuration: PulumiConfiguration
+  secretsProvider: string
 ) {
-  return destroyProgram(() => storageStack(applicationName), configuration);
+  return destroyProgram(() => storageStack(applicationName), secretsProvider);
 }

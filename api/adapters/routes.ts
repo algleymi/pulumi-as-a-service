@@ -8,12 +8,12 @@ export function createApi(
   const server = express();
 
   server.post("/storage", async function (_, res) {
-    await createStorage("arno-delete-me", configuration);
+    await createStorage("arno-delete-me", configuration.secretsProvider);
     res.sendStatus(200);
   });
 
   server.delete("/storage", async function (_, res) {
-    await deleteStorage("arno-delete-me", configuration);
+    await deleteStorage("arno-delete-me", configuration.secretsProvider);
     res.sendStatus(200);
   });
 

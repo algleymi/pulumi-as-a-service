@@ -3,7 +3,6 @@ import {
   LocalWorkspace,
   PulumiFn,
 } from "@pulumi/pulumi/automation";
-import { PulumiConfiguration } from "../pulumi-configuration";
 
 async function setupStack(program: PulumiFn, secretsProvider: string) {
   const args: InlineProgramArgs = {
@@ -26,7 +25,7 @@ async function setupStack(program: PulumiFn, secretsProvider: string) {
 
 export async function createProgram(
   program: PulumiFn,
-  { secretsProvider }: PulumiConfiguration
+  secretsProvider: string
 ) {
   const stack = await setupStack(program, secretsProvider);
   await stack.refresh({ onOutput: console.info });
@@ -36,7 +35,7 @@ export async function createProgram(
 
 export async function destroyProgram(
   program: PulumiFn,
-  { secretsProvider }: PulumiConfiguration
+  secretsProvider: string
 ) {
   const stack = await setupStack(program, secretsProvider);
   await stack.refresh({ onOutput: console.info });
