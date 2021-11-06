@@ -25,9 +25,7 @@ function getSecretsProvider() {
   return process.env[KMS_KEY_ALIAS_ENVIRONMENT_PATH];
 }
 
-export function getStackConfigurationFor(
-  stackName: string
-): LocalWorkspaceOptions {
+export function workspaceOptionsWith(stackName: string): LocalWorkspaceOptions {
   const secretsProvider = getSecretsProvider();
 
   return {

@@ -3,7 +3,7 @@ import {
   LocalWorkspace,
   PulumiFn,
 } from "@pulumi/pulumi/automation";
-import { getStackConfigurationFor } from "../pulumi-configuration";
+import { workspaceOptionsWith } from "../pulumi-configuration";
 
 async function setupStack(program: PulumiFn) {
   const stackName = "dev";
@@ -16,7 +16,7 @@ async function setupStack(program: PulumiFn) {
     program: program,
   };
 
-  const stackConfiguration = getStackConfigurationFor(stackName);
+  const stackConfiguration = workspaceOptionsWith(stackName);
 
   return await LocalWorkspace.createOrSelectStack(args, stackConfiguration);
 }
