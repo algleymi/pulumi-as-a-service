@@ -1,5 +1,7 @@
-import { Environment } from "@pulumi/aws/appconfig";
-import { validateEnvironmentVariables } from "./pulumi-configuration";
+import {
+  validateEnvironmentVariables,
+  workspaceOptionsWith,
+} from "./pulumi-configuration";
 
 describe("pulumi-configuration", () => {
   it("throws an error when the pulumi configuration is invalid", () => {
@@ -13,10 +15,31 @@ describe("pulumi-configuration", () => {
       PULUMI_BACKEND_URL: "some-backend-url",
       KMS_KEY_ALIAS: "some-kms-key-alias",
     };
-
     process.env = NEW_ENV;
 
     expect(() => validateEnvironmentVariables()).not.toThrow();
+
+    process.env = OLD_ENV;
+  });
+
+  it("returns the stack configuration for a given stack", () => {
+    const OLD_ENV = process.env;
+    const NEW_ENV = {
+      ...OLD_ENV,
+      KMS_KEY_ALIAS: "some-kms-key-alias",
+    };
+    process.env = NEW_ENV;
+
+    expect(workspaceOptionsWith("arnos-stack")).toMatchInlineSnapshot(`
+      Object {
+        "secretsProvider": "some-kms-key-alias",
+        "stackSettings": Object {
+          "arnos-stack": Object {
+            "secretsProvider": "some-kms-key-alias",
+          },
+        },
+      }
+    `);
 
     process.env = OLD_ENV;
   });
