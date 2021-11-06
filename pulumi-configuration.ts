@@ -1,3 +1,5 @@
+import { LocalWorkspaceOptions } from "@pulumi/pulumi/automation";
+
 const KMS_KEY_ALIAS_ENVIRONMENT_PATH = "KMS_KEY_ALIAS";
 const PULUMI_BACKEND_URL_ENVIRONMENT_PATH = "PULUMI_BACKEND_URL";
 
@@ -19,14 +21,21 @@ export function validateEnvironmentVariables() {
   }
 }
 
-export type PulumiConfiguration = {
-  secretsProvider: string;
-};
+function getSecretsProvider() {
+  return process.env[KMS_KEY_ALIAS_ENVIRONMENT_PATH];
+}
 
-export function getPulumiConfiguration(): PulumiConfiguration {
-  const kmsKeyAlias = process.env[KMS_KEY_ALIAS_ENVIRONMENT_PATH];
+export function getStackConfigurationFor(
+  stackName: string
+): LocalWorkspaceOptions {
+  const secretsProvider = getSecretsProvider();
 
   return {
-    secretsProvider: kmsKeyAlias,
+    secretsProvider,
+    stackSettings: {
+      [stackName]: {
+        secretsProvider,
+      },
+    },
   };
 }

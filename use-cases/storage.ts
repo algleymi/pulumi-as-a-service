@@ -20,16 +20,13 @@ export async function storageStack(
   };
 }
 
-export function createStorage(
-  applicationName: string,
-  secretsProvider: string
-) {
-  return createProgram(() => storageStack(applicationName), secretsProvider);
+export function createStorage(applicationName: string) {
+  return createProgram(() => storageStack(applicationName));
 }
 
 export function deleteStorage(
   applicationName: string,
   secretsProvider: string
 ) {
-  return destroyProgram(() => storageStack(applicationName), secretsProvider);
+  return destroyProgram(() => storageStack(applicationName));
 }

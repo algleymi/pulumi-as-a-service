@@ -3,41 +3,33 @@ import {
   LocalWorkspace,
   PulumiFn,
 } from "@pulumi/pulumi/automation";
+import { getStackConfigurationFor } from "../pulumi-configuration";
 
-async function setupStack(program: PulumiFn, secretsProvider: string) {
+async function setupStack(program: PulumiFn) {
+  const stackName = "dev";
+
   const args: InlineProgramArgs = {
     // TODO: inject this
-    stackName: "dev",
+    stackName,
     // TODO: inject this
     projectName: "inlineNode",
     program: program,
   };
 
-  return await LocalWorkspace.createOrSelectStack(args, {
-    secretsProvider,
-    stackSettings: {
-      [args.stackName]: {
-        secretsProvider,
-      },
-    },
-  });
+  const stackConfiguration = getStackConfigurationFor(stackName);
+
+  return await LocalWorkspace.createOrSelectStack(args, stackConfiguration);
 }
 
-export async function createProgram(
-  program: PulumiFn,
-  secretsProvider: string
-) {
-  const stack = await setupStack(program, secretsProvider);
+export async function createProgram(program: PulumiFn) {
+  const stack = await setupStack(program);
   await stack.refresh({ onOutput: console.info });
 
   await stack.up({ onOutput: console.info });
 }
 
-export async function destroyProgram(
-  program: PulumiFn,
-  secretsProvider: string
-) {
-  const stack = await setupStack(program, secretsProvider);
+export async function destroyProgram(program: PulumiFn) {
+  const stack = await setupStack(program);
   await stack.refresh({ onOutput: console.info });
 
   await stack.destroy({ onOutput: console.info });
