@@ -11,17 +11,18 @@ export function validateEnvironmentVariables() {
   const keyAlias = process.env[KMS_KEY_ALIAS_ENVIRONMENT_PATH];
   const pulumiBackendUrl = process.env[PULUMI_BACKEND_URL_ENVIRONMENT_PATH];
 
-  if (!keyAlias || !pulumiBackendUrl || !hasValidKmsKeyAlias(keyAlias)) {
-    const requiredEnvironmentVariables = [
-      KMS_KEY_ALIAS_ENVIRONMENT_PATH,
-      PULUMI_BACKEND_URL_ENVIRONMENT_PATH,
-    ];
+  if (!keyAlias) {
+    throw new Error(`${KMS_KEY_ALIAS_ENVIRONMENT_PATH} is not defined.`);
+  }
 
-    const errorMessage = `The following environment variables are required: ${requiredEnvironmentVariables.join(
-      ", "
-    )}.`;
+  if (!pulumiBackendUrl) {
+    throw new Error(`${PULUMI_BACKEND_URL_ENVIRONMENT_PATH} is not defined.`);
+  }
 
-    throw new Error(errorMessage);
+  if (!hasValidKmsKeyAlias(keyAlias)) {
+    throw new Error(
+      `${KMS_KEY_ALIAS_ENVIRONMENT_PATH} does not contain a valid value.`
+    );
   }
 }
 
