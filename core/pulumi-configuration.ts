@@ -3,11 +3,15 @@ import { LocalWorkspaceOptions } from "@pulumi/pulumi/automation";
 const KMS_KEY_ALIAS_ENVIRONMENT_PATH = "KMS_KEY_ALIAS";
 const PULUMI_BACKEND_URL_ENVIRONMENT_PATH = "PULUMI_BACKEND_URL";
 
+function hasValidKmsKeyAlias(keyAlias: string) {
+  return keyAlias.startsWith("awskms://alias/");
+}
+
 export function validateEnvironmentVariables() {
   const keyAlias = process.env[KMS_KEY_ALIAS_ENVIRONMENT_PATH];
   const pulumiBackendUrl = process.env[PULUMI_BACKEND_URL_ENVIRONMENT_PATH];
 
-  if (!keyAlias || !pulumiBackendUrl) {
+  if (!keyAlias || !pulumiBackendUrl || !hasValidKmsKeyAlias(keyAlias)) {
     const requiredEnvironmentVariables = [
       KMS_KEY_ALIAS_ENVIRONMENT_PATH,
       PULUMI_BACKEND_URL_ENVIRONMENT_PATH,
