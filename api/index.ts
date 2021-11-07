@@ -1,5 +1,5 @@
-import { validateEnvironmentVariables } from "../pulumi-configuration";
-import * as useCases from "../use-cases/index";
+import { validateEnvironmentVariables } from "@night_city.ts/core/pulumi-configuration";
+import * as useCases from "@night_city.ts/core/use-cases";
 
 import { createApi } from "./adapters/routes";
 
