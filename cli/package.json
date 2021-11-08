@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "tsc",
+    "start": "ts-node index.ts",
+    "compile": "tsc -p .",
     "test": "jest --passWithNoTests"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@night_city.ts/core": "1.0.0",
     "ts-node": "^10.4.0",
     "yargs": "^17.2.1"
   },
