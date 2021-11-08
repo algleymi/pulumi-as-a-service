@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import yargs from "yargs";
-import * as useCases from "@night_city.ts/core/use-cases";
+import * as useCases from "@night_city.ts/core/dist/use-cases";
 
 yargs
   .scriptName("night_city")
@@ -10,6 +10,6 @@ yargs
     console.info("hello world");
   })
   .command("storage", "Creates the storage stack", async function () {
-    await useCases.deleteStorage("arno-deleteme");
+    await useCases.createStorage("arno-delete-me");
   })
   .help().argv;
