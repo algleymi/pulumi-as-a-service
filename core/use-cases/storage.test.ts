@@ -3,8 +3,8 @@ import { Output } from "@pulumi/pulumi";
 import { storageStack } from "./storage";
 
 function getResultFromPulumiUp(
-  dependencies: Output<string>[]
-): Promise<string[]> {
+  dependencies: Output<any>[]
+): PromiseLike<string[]> {
   return new Promise((resolve) => {
     pulumi.all(dependencies).apply(resolve);
   });

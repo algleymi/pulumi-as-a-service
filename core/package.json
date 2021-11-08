@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "compile": "tsc",
     "lint": "prettier --check .",
     "lint:fix": "prettier --write .",
     "test": "jest"
