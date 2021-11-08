@@ -6,6 +6,8 @@
   "scripts": {
     "start": "ts-node index.ts",
     "compile": "tsc -p .",
+    "lint": "prettier --check .",
+    "lint:fix": "prettier --write .",
     "test": "jest --passWithNoTests"
   },
   "keywords": [],
