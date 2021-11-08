@@ -19,7 +19,7 @@
     "yargs": "^17.2.1"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.2",
+    "@types/jest": "27.0.2",
     "@types/node": "16.11.7",
     "cli": "^1.0.1",
     "jest": "^27.3.1",
