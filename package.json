@@ -1,8 +1,8 @@
 {
   "private": true,
   "workspaces": [
-    "cli",
     "core",
+    "cli",
     "api"
   ]
 }

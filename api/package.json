@@ -1,16 +1,17 @@
 {
   "name": "@night_city.ts/api",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "compile": "exit 0",
     "lint": "prettier --check .",
     "lint:fix": "prettier --write .",
     "start": "nodemon ./index.ts",
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
-    "@night_city.ts/core": "file:core"
+    "@night_city.ts/core": "0.0.1"
   },
   "devDependencies": {
     "@types/jest": "27.0.2",
