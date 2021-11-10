@@ -1,6 +1,6 @@
 {
   "name": "@night_city.ts/cli",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@night_city.ts/core": "file:core",
+    "@night_city.ts/core": "0.0.1",
     "ts-node": "^10.4.0",
     "yargs": "^17.2.1"
   },
