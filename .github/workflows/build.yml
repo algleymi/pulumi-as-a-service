@@ -21,21 +21,21 @@ jobs:
           node-version: "14"
 
       - name: Install dependencies
-        uses: borales/actions-yarn@v2.3.0
+        uses: borales/actions-yarn@v3.0.0
         with:
           cmd: install
 
       - name: Lint
-        uses: borales/actions-yarn@v2.3.0
+        uses: borales/actions-yarn@v3.0.0
         with:
           cmd: workspaces run lint
 
       - name: Build
-        uses: borales/actions-yarn@v2.3.0
+        uses: borales/actions-yarn@v3.0.0
         with:
           cmd: workspaces run compile
 
       - name: Test
-        uses: borales/actions-yarn@v2.3.0
+        uses: borales/actions-yarn@v3.0.0
         with:
           cmd: workspaces run test --coverage
