@@ -1,4 +1,4 @@
-# night_city.ts
+# pulumi-as-a-service
 
 # requirements
 
