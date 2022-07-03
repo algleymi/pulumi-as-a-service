@@ -1,5 +1,7 @@
 # pulumi-as-a-service
 
+Example repository on how the automation API could work. Don't expect many updates.
+
 # requirements
 
 We assume you have the following utilities installed and configured:
