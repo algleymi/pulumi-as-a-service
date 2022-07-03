@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/algleymi/pulumi-as-a-service#readme",
   "devDependencies": {
-    "@types/jest": "27.0.2",
-    "jest": "27.3.1",
+    "@types/jest": "27.5.2",
+    "jest": "27.5.1",
     "prettier": "2.4.1",
     "ts-jest": "27.0.7"
   },
