@@ -1,5 +1,5 @@
 {
-  "name": "@night_city.ts/api",
+  "name": "@algleymi/pulumiaas-api",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
-    "@night_city.ts/core": "0.0.1"
+    "@algleymi/pulumiaas-core": "0.0.1"
   },
   "devDependencies": {
     "@types/jest": "27.0.2",
