@@ -40,9 +40,7 @@ export function getRegion() {
   return process.env[AWS_REGION];
 }
 
-export function workspaceOptionsWith(
-  stackName: string
-): LocalWorkspaceOptions {
+export function workspaceOptionsWith(stackName: string): LocalWorkspaceOptions {
   const secretsProvider = getSecretsProvider();
 
   return {
