@@ -33,6 +33,7 @@ describe("pulumi-configuration", () => {
       ...OLD_ENV,
       PULUMI_BACKEND_URL: "some-backend-url",
       KMS_KEY_ALIAS: "awskms://alias/some-kms-key-alias",
+      AWS_REGION: "eu-west-1",
     };
     process.env = NEW_ENV;
 

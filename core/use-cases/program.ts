@@ -22,12 +22,7 @@ async function setupStack(program: PulumiFn) {
     args,
     stackConfiguration
   );
-  const region = getRegion();
-
-  if (!region)
-    throw new Error(
-      `No region set, are you sure you set the AWS_REGION variable?`
-    );
+  const region = getRegion() || "us-east-1";
 
   await stack.workspace.installPlugin("aws", "v4.0.0");
   await stack.setConfig("aws:region", { value: region });
