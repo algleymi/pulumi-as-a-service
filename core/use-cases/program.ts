@@ -3,7 +3,7 @@ import {
   LocalWorkspace,
   PulumiFn,
 } from "@pulumi/pulumi/automation";
-import { workspaceOptionsWith } from "../pulumi-configuration";
+import { workspaceOptionsWith, getRegion } from "../pulumi-configuration";
 
 async function setupStack(program: PulumiFn) {
   const stackName = "dev";
@@ -18,7 +18,17 @@ async function setupStack(program: PulumiFn) {
 
   const stackConfiguration = workspaceOptionsWith(stackName);
 
-  return await LocalWorkspace.createOrSelectStack(args, stackConfiguration);
+  const stack = await LocalWorkspace.createOrSelectStack(
+    args,
+    stackConfiguration
+  );
+  const region = getRegion();
+
+  if (!region) throw new Error(`No region set, are you sure you set the AWS_REGION variable?`);
+
+  await stack.workspace.installPlugin("aws", "v4.0.0");
+  await stack.setConfig("aws:region", { value: region });
+  return stack;
 }
 
 export async function createProgram(program: PulumiFn) {
