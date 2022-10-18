@@ -51,10 +51,10 @@ describe("pulumi-configuration", () => {
     process.env = NEW_ENV;
 
     expect(workspaceOptionsWith("arnos-stack")).toMatchInlineSnapshot(`
-      Object {
+      {
         "secretsProvider": "some-kms-key-alias",
-        "stackSettings": Object {
-          "arnos-stack": Object {
+        "stackSettings": {
+          "arnos-stack": {
             "secretsProvider": "some-kms-key-alias",
           },
         },
